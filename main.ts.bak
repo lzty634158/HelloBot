@@ -389,8 +389,7 @@ namespace HelloBot {
             yahStrip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB);
         }
         return yahStrip;  
-    }
-  
+    }  
     
 		//% blockId=HelloBot_ultrasonic_car block="ultrasonic return distance(cm)"
     //% color="#006400"
