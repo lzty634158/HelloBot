@@ -402,8 +402,7 @@ namespace HelloBot {
             yahStripLArm = neopixel.create(DigitalPin.P6, 1, NeoPixelMode.RGB);
         }
         return yahStripLArm;  
-    }
-  
+    } 
     
     //% blockId=HelloBot_RGB_RArm_Program block="RGB_RArm_Program"
     //% weight=97
@@ -418,7 +417,6 @@ namespace HelloBot {
         return yahStripRArm;  
     }
 
-
     //% blockId=HelloBot_RGB_Line_Program block="RGB_Line_Program"
     //% weight=96
     //% blockGap=10
@@ -430,8 +428,7 @@ namespace HelloBot {
             yahStripLine = neopixel.create(DigitalPin.P5, 1, NeoPixelMode.RGB);
         }
         return yahStripLine;  
-    }
-    
+    }    
     
 		//% blockId=HelloBot_ultrasonic_car block="ultrasonic return distance(cm)"
     //% color="#006400"
