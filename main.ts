@@ -2,7 +2,7 @@
 Copyright (C): 2010-2019, Shenzhen Yahboom Tech
 modified from liusen
 load dependency
-"mbit": "file:../pxt-mbit"
+"mbit": "file:../pxt-hellobot"
 */
 
 //% color="#006400" weight=20 icon="\uf1b9"
@@ -29,6 +29,9 @@ namespace HelloBot {
 
     let initialized = false
     let yahStrip: neopixel.Strip;
+    let yahStripLArm: neopixel.Strip;
+    let yahStripRArm: neopixel.Strip;
+    let yahStripLine: neopixel.Strip;
 
     export enum enColor {
 
@@ -84,9 +87,9 @@ namespace HelloBot {
 
     export enum enLineState {
         //% blockId="White" block="白线"
-        White = 0,
+        White = 1,
         //% blockId="Black" block="黑线"
-        Black = 1
+        Black = 0
 
     }
     
@@ -373,91 +376,9 @@ namespace HelloBot {
     /**
      * *****************************************************************
      * @param index
-     */
-    //% blockId=mbit_RGB_Car_Big2 block="RGB_Car_Big2|value %value"
-    //% weight=101
-    //% blockGap=10
-    //% color="#C814B8"
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function RGB_Car_Big2(value: enColor): void {
+     */   
 
-        switch (value) {
-            case enColor.OFF: {
-                setPwm(0, 0, 0);
-                setPwm(1, 0, 0);
-                setPwm(2, 0, 0);
-                break;
-            }
-            case enColor.Red: {
-                setPwm(0, 0, 4095);
-                setPwm(1, 0, 0);
-                setPwm(2, 0, 0);
-                break;
-            }
-            case enColor.Green: {
-                setPwm(0, 0, 0);
-                setPwm(1, 0, 4095);
-                setPwm(2, 0, 0);
-                break;
-            }
-            case enColor.Blue: {
-                setPwm(0, 0, 0);
-                setPwm(1, 0, 0);
-                setPwm(2, 0, 4095);
-                break;
-            }
-            case enColor.White: {
-                setPwm(0, 0, 4095);
-                setPwm(1, 0, 4095);
-                setPwm(2, 0, 4095);
-                break;
-            }
-            case enColor.Cyan: {
-                setPwm(0, 0, 0);
-                setPwm(1, 0, 4095);
-                setPwm(2, 0, 4095);
-                break;
-            }
-            case enColor.Pinkish: {
-                setPwm(0, 0, 4095);
-                setPwm(1, 0, 0);
-                setPwm(2, 0, 4095);
-                break;
-            }
-            case enColor.Yellow: {
-                setPwm(0, 0, 4095);
-                setPwm(1, 0, 4095);
-                setPwm(2, 0, 0);
-                break;
-            }
-        }
-    }
-    //% blockId=mbit_RGB_Car_Big block="RGB_Car_Big|value1 %value1|value2 %value2|value3 %value3"
-    //% weight=100
-    //% blockGap=10
-    //% color="#C814B8"
-    //% value1.min=0 value1.max=255 value2.min=0 value2.max=255 value3.min=0 value3.max=255
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function RGB_Car_Big(value1: number, value2: number, value3: number): void {
-
-        let R = value1 * 16;
-        let G = value2 * 16;
-        let B = value3 * 16;
-
-        if (R > 4096)
-            R = 4095;
-        if (G > 4096)
-            G = 4095;
-        if (B > 4096)
-            B = 4095;
-
-        setPwm(0, 0, R);
-        setPwm(1, 0, G);
-        setPwm(2, 0, B);
-
-    }
-
-    //% blockId=mbit_RGB_Car_Program block="RGB_Car_Program"
+    //% blockId=HelloBot_RGB_Car_Program block="RGB_Car_Program"
     //% weight=99
     //% blockGap=10
     //% color="#C814B8"
@@ -469,11 +390,52 @@ namespace HelloBot {
         }
         return yahStrip;  
     }
-
-
-	//% blockId=mbit_ultrasonic_car block="ultrasonic return distance(cm)"
-    //% color="#006400"
+    
+    //% blockId=HelloBot_RGB_LArm_Program block="RGB_LArm_Program"
     //% weight=98
+    //% blockGap=10
+    //% color="#C814B8"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function RGB_LArm_Program(): neopixel.Strip {
+         
+        if (!yahStripLArm) {
+            yahStripLArm = neopixel.create(DigitalPin.P6, 1, NeoPixelMode.RGB);
+        }
+        return yahStripLArm;  
+    }
+  
+    
+    //% blockId=HelloBot_RGB_RArm_Program block="RGB_RArm_Program"
+    //% weight=97
+    //% blockGap=10
+    //% color="#C814B8"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function RGB_LArm_Program(): neopixel.Strip {
+         
+        if (!yahStripRArm) {
+            yahStripRArm = neopixel.create(DigitalPin.P9, 1, NeoPixelMode.RGB);
+        }
+        return yahStripRArm;  
+    }
+
+
+    //% blockId=HelloBot_RGB_Line_Program block="RGB_Line_Program"
+    //% weight=96
+    //% blockGap=10
+    //% color="#C814B8"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function RGB_Line_Program(): neopixel.Strip {
+         
+        if (!yahStripLine) {
+            yahStripLine = neopixel.create(DigitalPin.P5, 1, NeoPixelMode.RGB);
+        }
+        return yahStripLine;  
+    }
+    
+    
+		//% blockId=HelloBot_ultrasonic_car block="ultrasonic return distance(cm)"
+    //% color="#006400"
+    //% weight=90
     //% blockGap=10
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Ultrasonic_Car(): number {
@@ -491,8 +453,8 @@ namespace HelloBot {
         return d / 58;
     }
 
-    //% blockId=mbit_Music_Car block="Music_Car|%index"
-    //% weight=97
+    //% blockId=HelloBot_Music_Car block="Music_Car|%index"
+    //% weight=89
     //% blockGap=10
     //% color="#006400"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
@@ -520,8 +482,8 @@ namespace HelloBot {
             case enMusic.power_down: music.beginMelody(music.builtInMelody(Melodies.PowerDown), MelodyOptions.Once); break;
         }
     }
-    //% blockId=mbit_Servo_Car block="Servo_Car|num %num|value %value"
-    //% weight=96
+    //% blockId=HelloBot_Servo_Car block="Servo_Car|num %num|value %value"
+    //% weight=87
     //% blockGap=10
     //% color="#006400"
     //% num.min=1 num.max=3 value.min=0 value.max=180
@@ -535,8 +497,8 @@ namespace HelloBot {
 
     }
 
-    //% blockId=mbit_Avoid_Sensor block="Avoid_Sensor|value %value"
-    //% weight=95
+    //% blockId=HelloBot_Avoid_Sensor block="Avoid_Sensor|value %value"
+    //% weight=86
     //% blockGap=10
     //% color="#006400"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
@@ -575,8 +537,8 @@ namespace HelloBot {
         return temp;
 
     }
-    //% blockId=mbit_Line_Sensor block="Line_Sensor|direct %direct|value %value"
-    //% weight=94
+    //% blockId=HelloBot_Line_Sensor block="Line_Sensor|direct %direct|value %value"
+    //% weight=85
     //% blockGap=10
     //% color="#006400"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
@@ -620,8 +582,8 @@ namespace HelloBot {
         return temp;
 
     }
-    //% blockId=mbit_CarCtrl block="CarCtrl|%index"
-    //% weight=93
+    //% blockId=HelloBot_CarCtrl block="CarCtrl|%index"
+    //% weight=84
     //% blockGap=10
     //% color="#006400"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=10
@@ -636,8 +598,8 @@ namespace HelloBot {
             case CarState.Car_SpinRight: Car_spinright(255, 255); break;
         }
     }
-    //% blockId=mbit_CarCtrlSpeed block="CarCtrlSpeed|%index|speed %speed"
-    //% weight=92
+    //% blockId=HelloBot_CarCtrlSpeed block="CarCtrlSpeed|%index|speed %speed"
+    //% weight=83
     //% blockGap=10
     //% speed.min=0 speed.max=255
     //% color="#006400"
@@ -653,8 +615,8 @@ namespace HelloBot {
             case CarState.Car_SpinRight: Car_spinright(speed, speed); break;
         }
     }
-    //% blockId=mbit_CarCtrlSpeed2 block="CarCtrlSpeed2|%index|speed1 %speed1|speed2 %speed2"
-    //% weight=91
+    //% blockId=HelloBot_CarCtrlSpeed2 block="CarCtrlSpeed2|%index|speed1 %speed1|speed2 %speed2"
+    //% weight=82
     //% blockGap=10
     //% speed1.min=0 speed1.max=255 speed2.min=0 speed2.max=255
     //% color="#006400"

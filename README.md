@@ -1,6 +1,6 @@
-# mbit
+# HelloBot
 
-Extension for Yahboom mbit
+Extension for Yahboom HelloBot
 
 ## License
 
