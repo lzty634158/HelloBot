@@ -1,7 +1,7 @@
 {
-    "name": "mbit",
+    "name": "HelloBot",
     "version": "1.1.0",
-    "description": "Extension for YahBoom m:bit",
+    "description": "Extension for YahBoom HelloBot",
     "license": "MIT",
     "dependencies": {
         "core": "*",
