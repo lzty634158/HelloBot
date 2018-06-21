@@ -410,7 +410,7 @@ namespace HelloBot {
     //% blockGap=10
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function RGB_LArm_Program(): neopixel.Strip {
+    export function RGB_RArm_Program(): neopixel.Strip {
          
         if (!yahStripRArm) {
             yahStripRArm = neopixel.create(DigitalPin.P9, 1, NeoPixelMode.RGB);
