@@ -389,33 +389,7 @@ namespace HelloBot {
             yahStrip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB);
         }
         return yahStrip;  
-    }
-    
-    //% blockId=HelloBot_RGB_LArm_Program block="RGB_LArm_Program"
-    //% weight=98
-    //% blockGap=10
-    //% color="#C814B8"
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function RGB_LArm_Program(): neopixel.Strip {
-         
-        if (!yahStripLArm) {
-            yahStripLArm = neopixel.create(DigitalPin.P6, 1, NeoPixelMode.RGB);
-        }
-        return yahStripLArm;  
-    } 
-
-    //% blockId=HelloBot_RGB_Line_Program block="RGB_Line_Program"
-    //% weight=96
-    //% blockGap=10
-    //% color="#C814B8"
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function RGB_Line_Program(): neopixel.Strip {
-         
-        if (!yahStripLine) {
-            yahStripLine = neopixel.create(DigitalPin.P5, 1, NeoPixelMode.RGB);
-        }
-        return yahStripLine;  
-    }    
+    }  
     
 		//% blockId=HelloBot_ultrasonic_car block="ultrasonic return distance(cm)"
     //% color="#006400"
