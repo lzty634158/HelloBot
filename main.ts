@@ -404,19 +404,6 @@ namespace HelloBot {
         return yahStripLArm;  
     } 
 
-		//% blockId=HelloBot_RGB_RArm_Program block="RGB_RArm_Program"
-		//% weight=97
-		//% blockGap=10
-		//% color="#C814B8"
-		//% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-		export function RGB_RArm_Program(): neopixel.Strip {
-         
-        if (!yahStripRArm) {
-            yahStripRArm = neopixel.create(DigitalPin.P9, 1, NeoPixelMode.RGB);
-        }
-        return yahStripRArm;  
-    }
-
     //% blockId=HelloBot_RGB_Line_Program block="RGB_Line_Program"
     //% weight=96
     //% blockGap=10
