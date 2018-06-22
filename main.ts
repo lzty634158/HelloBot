@@ -107,7 +107,7 @@ namespace HelloBot {
         S1 = 1,
         S2,
         S3,
-        s4
+        S4
     }
     export enum CarState {
         //% blockId="Car_Run" block="前行"
