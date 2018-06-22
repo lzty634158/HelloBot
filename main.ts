@@ -106,7 +106,8 @@ namespace HelloBot {
         
         S1 = 1,
         S2,
-        S3
+        S3,
+        s4
     }
     export enum CarState {
         //% blockId="Car_Run" block="前行"
@@ -483,7 +484,7 @@ namespace HelloBot {
     //% weight=87
     //% blockGap=10
     //% color="#006400"
-    //% num.min=1 num.max=3 value.min=0 value.max=180
+    //% num.min=1 num.max=4 value.min=0 value.max=180
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=9
     export function Servo_Car(num: enServo, value: number): void {
 
