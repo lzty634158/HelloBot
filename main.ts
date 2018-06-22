@@ -425,7 +425,7 @@ namespace HelloBot {
     export function RGB_Line_Program(): neopixel.Strip {
          
         if (!yahStripLine) {
-            yahStripLine = neopixel.create(DigitalPin.P5, 1, NeoPixelMode.RGB);
+            yahStripLine = neopixel.create(DigitalPin.P5, 4, NeoPixelMode.RGB);
         }
         return yahStripLine;  
     }  
