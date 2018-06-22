@@ -79,9 +79,9 @@ namespace HelloBot {
     }
     export enum enPos {
 
-        //% blockId="LeftState" block="左边状态"
+        //% blockId="LeftState" block="左边"
         LeftState = 0,
-        //% blockId="RightState" block="右边状态"
+        //% blockId="RightState" block="右边"
         RightState = 1
     }
 
@@ -90,9 +90,14 @@ namespace HelloBot {
         White = 1,
         //% blockId="Black" block="黑线"
         Black = 0
-
     }
     
+    export enum enTouchState {
+        //% blockId="Get" block="感受到"
+        Get = 0,
+        //% blockId="Black" block="未感受到"
+        NoGet = 1
+    }    
     export enum enAvoidState {
         //% blockId="OBSTACLE" block="有障碍物"
         OBSTACLE = 0,
@@ -417,9 +422,44 @@ namespace HelloBot {
         }
         return yahStripRArm;  
     }
-
-    //% blockId=HelloBot_RGB_Line_Program block="RGB_Line_Program"
+    
+    //% blockId=HelloBot_Touch_Sensor block="Touch_Sensor|%direct |direct |%value| value"
     //% weight=96
+    //% blockGap=10
+    //% color="#C814B8"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
+    export function Touch_Sensor(direct: enPos, value: enTouchState): boolean {
+
+        let temp: boolean = false;
+ 				pins.setPull(DigitalPin.P7, PinPullMode.PullUp);
+ 				pins.setPull(DigitalPin.P10, PinPullMode.PullUp);
+        switch (direct) {
+            case enPos.LeftState: {
+            
+                if (pins.digitalReadPin(DigitalPin.P7) == enTouchState.Get) {
+                    temp = true
+                }
+                else {
+										temp = false
+                }
+                break;
+            }
+
+            case enPos.RightState: {
+                if (pins.digitalReadPin(DigitalPin.P10) == enTouchState.Get) {                   
+                    temp = true;
+                }
+                else {
+                    temp = false
+                }
+                break;
+            }
+        }
+        return temp;
+
+    }
+    //% blockId=HelloBot_RGB_Line_Program block="RGB_Line_Program"
+    //% weight=95
     //% blockGap=10
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
