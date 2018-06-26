@@ -387,7 +387,7 @@ namespace HelloBot {
     //% blockId=HelloBot_RGB_Car_Program block="RGB_Car_Program"
     //% weight=99
     //% blockGap=10
-    //% color="#C814B8"
+    //% color="#006400"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function RGB_Car_Program(): neopixel.Strip {
          
@@ -400,7 +400,7 @@ namespace HelloBot {
     //% blockId=HelloBot_RGB_LArm_Program block="RGB_LArm_Program"
     //% weight=98
     //% blockGap=10
-    //% color="#C814B8"
+    //% color="#006400"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function RGB_LArm_Program(): neopixel.Strip {
          
@@ -413,7 +413,7 @@ namespace HelloBot {
     //% blockId=HelloBot_RGB_RArm_Program block="RGB_RArm_Program"
 		//% weight=97
 		//% blockGap=10
-		//% color="#C814B8"
+		//% color="#006400"
 		//% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function RGB_RArm_Program(): neopixel.Strip {
          
@@ -556,7 +556,7 @@ namespace HelloBot {
     //% blockId=HelloBot_RGB_Line_Program block="RGB_Line_Program"
     //% weight=90
     //% blockGap=10
-    //% color="#C814B8"
+    //% color="#006400"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function RGB_Line_Program(): neopixel.Strip {
          
