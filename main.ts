@@ -458,41 +458,8 @@ namespace HelloBot {
         return temp;
 
     }
-    //% blockId=HelloBot_RGB_Line_Program block="RGB_Line_Program"
-    //% weight=95
-    //% blockGap=10
-    //% color="#C814B8"
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function RGB_Line_Program(): neopixel.Strip {
-         
-        if (!yahStripLine) {
-            yahStripLine = neopixel.create(DigitalPin.P5, 4, NeoPixelMode.RGB);
-        }
-        return yahStripLine;  
-    }  
-    
-		//% blockId=HelloBot_ultrasonic_car block="ultrasonic return distance(cm)"
-    //% color="#006400"
-    //% weight=90
-    //% blockGap=10
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function Ultrasonic_Car(): number {
-
-        // send pulse
-        pins.setPull(DigitalPin.P14, PinPullMode.PullNone);
-        pins.digitalWritePin(DigitalPin.P14, 0);
-        control.waitMicros(2);
-        pins.digitalWritePin(DigitalPin.P14, 1);
-        control.waitMicros(10);
-        pins.digitalWritePin(DigitalPin.P14, 0);
-
-        // read pulse
-        let d = pins.pulseIn(DigitalPin.P15, PulseValue.High, 43200);
-        return d / 58;
-    }
-
     //% blockId=HelloBot_Music_Car block="Music_Car|%index"
-    //% weight=89
+    //% weight=95
     //% blockGap=10
     //% color="#006400"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
@@ -521,7 +488,7 @@ namespace HelloBot {
         }
     }
     //% blockId=HelloBot_Servo_Car block="Servo_Car|num %num|value %value"
-    //% weight=87
+    //% weight=94
     //% blockGap=10
     //% color="#006400"
     //% num.min=1 num.max=4 value.min=0 value.max=180
@@ -534,49 +501,73 @@ namespace HelloBot {
         setPwm(num + 2, 0, pwm);
 
     }
-
-    //% blockId=HelloBot_Avoid_Sensor block="Avoid_Sensor|value %value"
-    //% weight=86
+    
+    //% blockId=HelloBot_CarCtrl block="CarCtrl|%index"
+    //% weight=93
     //% blockGap=10
     //% color="#006400"
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
-    export function Avoid_Sensor(value: enAvoidState): boolean {
-
-        let temp: boolean = false;
-        pins.digitalWritePin(DigitalPin.P9, 0);
-        switch (value) {
-            case enAvoidState.OBSTACLE: {
-                if (pins.analogReadPin(AnalogPin.P3) < 800) {
-                
-                    temp = true;
-                    setPwm(8, 0, 0);
-                }
-                else {                 
-                    temp = false;
-                    setPwm(8, 0, 4095);
-                }
-                break;
-            }
-
-            case enAvoidState.NOOBSTACLE: {
-                if (pins.analogReadPin(AnalogPin.P3) > 800) {
-
-                    temp = true;
-                    setPwm(8, 0, 4095);
-                }
-                else {
-                    temp = false;
-                    setPwm(8, 0, 0);
-                }
-                break;
-            }
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=10
+    export function CarCtrl(index: CarState): void {
+        switch (index) {
+            case CarState.Car_Run: Car_run(255, 255); break;
+            case CarState.Car_Back: Car_back(255, 255); break;
+            case CarState.Car_Left: Car_left(255, 255); break;
+            case CarState.Car_Right: Car_right(255, 255); break;
+            case CarState.Car_Stop: Car_stop(); break;
+            case CarState.Car_SpinLeft: Car_spinleft(255, 255); break;
+            case CarState.Car_SpinRight: Car_spinright(255, 255); break;
         }
-        pins.digitalWritePin(DigitalPin.P9, 1);
-        return temp;
-
     }
+    //% blockId=HelloBot_CarCtrlSpeed block="CarCtrlSpeed|%index|speed %speed"
+    //% weight=92
+    //% blockGap=10
+    //% speed.min=0 speed.max=255
+    //% color="#006400"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=10
+    export function CarCtrlSpeed(index: CarState, speed: number): void {
+        switch (index) {
+            case CarState.Car_Run: Car_run(speed, speed); break;
+            case CarState.Car_Back: Car_back(speed, speed); break;
+            case CarState.Car_Left: Car_left(speed, speed); break;
+            case CarState.Car_Right: Car_right(speed, speed); break;
+            case CarState.Car_Stop: Car_stop(); break;
+            case CarState.Car_SpinLeft: Car_spinleft(speed, speed); break;
+            case CarState.Car_SpinRight: Car_spinright(speed, speed); break;
+        }
+    }
+    //% blockId=HelloBot_CarCtrlSpeed2 block="CarCtrlSpeed2|%index|speed1 %speed1|speed2 %speed2"
+    //% weight=91
+    //% blockGap=10
+    //% speed1.min=0 speed1.max=255 speed2.min=0 speed2.max=255
+    //% color="#006400"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=10
+    export function CarCtrlSpeed2(index: CarState, speed1: number, speed2: number): void {
+        switch (index) {
+            case CarState.Car_Run: Car_run(speed1, speed2); break;
+            case CarState.Car_Back: Car_back(speed1, speed2); break;
+            case CarState.Car_Left: Car_left(speed1, speed2); break;
+            case CarState.Car_Right: Car_right(speed1, speed2); break;
+            case CarState.Car_Stop: Car_stop(); break;
+            case CarState.Car_SpinLeft: Car_spinleft(speed1, speed2); break;
+            case CarState.Car_SpinRight: Car_spinright(speed1, speed2); break;
+        }
+    }    
+        
+    //% blockId=HelloBot_RGB_Line_Program block="RGB_Line_Program"
+    //% weight=90
+    //% blockGap=10
+    //% color="#C814B8"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function RGB_Line_Program(): neopixel.Strip {
+         
+        if (!yahStripLine) {
+            yahStripLine = neopixel.create(DigitalPin.P5, 4, NeoPixelMode.RGB);
+        }
+        return yahStripLine;  
+    }  
+    
     //% blockId=HelloBot_Line_Sensor block="Line_Sensor|direct %direct|value %value"
-    //% weight=85
+    //% weight=89
     //% blockGap=10
     //% color="#006400"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
@@ -619,55 +610,69 @@ namespace HelloBot {
         }
         return temp;
 
+    }    
+		//% blockId=HelloBot_ultrasonic_car block="ultrasonic return distance(cm)"
+    //% color="#006400"
+    //% weight=88
+    //% blockGap=10
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function Ultrasonic_Car(): number {
+
+        // send pulse
+        pins.setPull(DigitalPin.P14, PinPullMode.PullNone);
+        pins.digitalWritePin(DigitalPin.P14, 0);
+        control.waitMicros(2);
+        pins.digitalWritePin(DigitalPin.P14, 1);
+        control.waitMicros(10);
+        pins.digitalWritePin(DigitalPin.P14, 0);
+
+        // read pulse
+        let d = pins.pulseIn(DigitalPin.P15, PulseValue.High, 43200);
+        return d / 58;
     }
-    //% blockId=HelloBot_CarCtrl block="CarCtrl|%index"
-    //% weight=84
+
+
+
+    //% blockId=HelloBot_Avoid_Sensor block="Avoid_Sensor|value %value"
+    //% weight=87
     //% blockGap=10
     //% color="#006400"
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=10
-    export function CarCtrl(index: CarState): void {
-        switch (index) {
-            case CarState.Car_Run: Car_run(255, 255); break;
-            case CarState.Car_Back: Car_back(255, 255); break;
-            case CarState.Car_Left: Car_left(255, 255); break;
-            case CarState.Car_Right: Car_right(255, 255); break;
-            case CarState.Car_Stop: Car_stop(); break;
-            case CarState.Car_SpinLeft: Car_spinleft(255, 255); break;
-            case CarState.Car_SpinRight: Car_spinright(255, 255); break;
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
+    export function Avoid_Sensor(value: enAvoidState): boolean {
+
+        let temp: boolean = false;
+        pins.digitalWritePin(DigitalPin.P9, 0);
+        switch (value) {
+            case enAvoidState.OBSTACLE: {
+                if (pins.analogReadPin(AnalogPin.P3) < 800) {
+                
+                    temp = true;
+                    setPwm(8, 0, 0);
+                }
+                else {                 
+                    temp = false;
+                    setPwm(8, 0, 4095);
+                }
+                break;
+            }
+
+            case enAvoidState.NOOBSTACLE: {
+                if (pins.analogReadPin(AnalogPin.P3) > 800) {
+
+                    temp = true;
+                    setPwm(8, 0, 4095);
+                }
+                else {
+                    temp = false;
+                    setPwm(8, 0, 0);
+                }
+                break;
+            }
         }
+        pins.digitalWritePin(DigitalPin.P9, 1);
+        return temp;
+
     }
-    //% blockId=HelloBot_CarCtrlSpeed block="CarCtrlSpeed|%index|speed %speed"
-    //% weight=83
-    //% blockGap=10
-    //% speed.min=0 speed.max=255
-    //% color="#006400"
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=10
-    export function CarCtrlSpeed(index: CarState, speed: number): void {
-        switch (index) {
-            case CarState.Car_Run: Car_run(speed, speed); break;
-            case CarState.Car_Back: Car_back(speed, speed); break;
-            case CarState.Car_Left: Car_left(speed, speed); break;
-            case CarState.Car_Right: Car_right(speed, speed); break;
-            case CarState.Car_Stop: Car_stop(); break;
-            case CarState.Car_SpinLeft: Car_spinleft(speed, speed); break;
-            case CarState.Car_SpinRight: Car_spinright(speed, speed); break;
-        }
-    }
-    //% blockId=HelloBot_CarCtrlSpeed2 block="CarCtrlSpeed2|%index|speed1 %speed1|speed2 %speed2"
-    //% weight=82
-    //% blockGap=10
-    //% speed1.min=0 speed1.max=255 speed2.min=0 speed2.max=255
-    //% color="#006400"
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=10
-    export function CarCtrlSpeed2(index: CarState, speed1: number, speed2: number): void {
-        switch (index) {
-            case CarState.Car_Run: Car_run(speed1, speed2); break;
-            case CarState.Car_Back: Car_back(speed1, speed2); break;
-            case CarState.Car_Left: Car_left(speed1, speed2); break;
-            case CarState.Car_Right: Car_right(speed1, speed2); break;
-            case CarState.Car_Stop: Car_stop(); break;
-            case CarState.Car_SpinLeft: Car_spinleft(speed1, speed2); break;
-            case CarState.Car_SpinRight: Car_spinright(speed1, speed2); break;
-        }
-    }
+
+
 }
