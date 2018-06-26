@@ -426,7 +426,7 @@ namespace HelloBot {
     //% blockId=HelloBot_Touch_Sensor block="Touch_Sensor|%direct |direct |%value| value"
     //% weight=96
     //% blockGap=10
-    //% color="#C814B8"
+    //% color="#006400"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
     export function Touch_Sensor(direct: enPos, value: enTouchState): boolean {
 
