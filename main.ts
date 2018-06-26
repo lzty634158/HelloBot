@@ -105,7 +105,6 @@ namespace HelloBot {
         NOOBSTACLE = 1
 
     }
-
     
     export enum enServo {
         
@@ -186,7 +185,6 @@ namespace HelloBot {
         buf[4] = (off >> 8) & 0xff;
         pins.i2cWriteBuffer(PCA9685_ADD, buf);
     }
-
 
     function Car_run(speed1: number, speed2: number) {
 
@@ -458,6 +456,7 @@ namespace HelloBot {
         return temp;
 
     }
+    
     //% blockId=HelloBot_Music_Car block="Music_Car|%index"
     //% weight=95
     //% blockGap=10
@@ -487,6 +486,7 @@ namespace HelloBot {
             case enMusic.power_down: music.beginMelody(music.builtInMelody(Melodies.PowerDown), MelodyOptions.Once); break;
         }
     }
+    
     //% blockId=HelloBot_Servo_Car block="Servo_Car|num %num|value %value"
     //% weight=94
     //% blockGap=10
@@ -518,6 +518,7 @@ namespace HelloBot {
             case CarState.Car_SpinRight: Car_spinright(255, 255); break;
         }
     }
+    
     //% blockId=HelloBot_CarCtrlSpeed block="CarCtrlSpeed|%index|speed %speed"
     //% weight=92
     //% blockGap=10
@@ -535,6 +536,7 @@ namespace HelloBot {
             case CarState.Car_SpinRight: Car_spinright(speed, speed); break;
         }
     }
+    
     //% blockId=HelloBot_CarCtrlSpeed2 block="CarCtrlSpeed2|%index|speed1 %speed1|speed2 %speed2"
     //% weight=91
     //% blockGap=10
@@ -610,7 +612,8 @@ namespace HelloBot {
         }
         return temp;
 
-    }    
+    }
+        
 		//% blockId=HelloBot_ultrasonic_car block="ultrasonic return distance(cm)"
     //% color="#006400"
     //% weight=88
@@ -630,8 +633,6 @@ namespace HelloBot {
         let d = pins.pulseIn(DigitalPin.P15, PulseValue.High, 43200);
         return d / 58;
     }
-
-
 
     //% blockId=HelloBot_Avoid_Sensor block="Avoid_Sensor|value %value"
     //% weight=87
