@@ -87,9 +87,9 @@ namespace HelloBot {
 
     export enum enLineState {
         //% blockId="White" block="白线"
-        White = 0,
+        White = 1,
         //% blockId="Black" block="黑线"
-        Black = 1
+        Black = 0
     }
     
     export enum enTouchState {
@@ -100,9 +100,9 @@ namespace HelloBot {
     }    
     export enum enAvoidState {
         //% blockId="OBSTACLE" block="有障碍物"
-        OBSTACLE = 0,
+        OBSTACLE = 1,
         //% blockId="NOOBSTACLE" block="无障碍物"
-        NOOBSTACLE = 1
+        NOOBSTACLE = 0
 
     }
     
@@ -580,7 +580,7 @@ namespace HelloBot {
 				pins.setPull(DigitalPin.P2, PinPullMode.PullUp);
         switch (direct) {
             case enPos.LeftState: {
-                if (pins.digitalReadPin(DigitalPin.P2) == value) {              
+                if (pins.digitalReadPin(DigitalPin.P1) == value) {              
                     temp = true;                  
                 }
                 else {                  
@@ -590,7 +590,7 @@ namespace HelloBot {
             }
 
             case enPos.RightState: {
-                if (pins.digitalReadPin(DigitalPin.P1) == value) {              
+                if (pins.digitalReadPin(DigitalPin.P2) == value) {              
                     temp = true;                  
                 }
                 else {
