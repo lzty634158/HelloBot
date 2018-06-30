@@ -429,22 +429,22 @@ namespace HelloBot {
     export function Touch_Sensor(direct: enPos, value: enTouchState): boolean {
 
         let temp: boolean = false;
- 				pins.setPull(DigitalPin.P7, PinPullMode.PullUp);
- 				pins.setPull(DigitalPin.P10, PinPullMode.PullUp);
+        pins.setPull(DigitalPin.P7, PinPullMode.PullUp);
+        pins.setPull(DigitalPin.P10, PinPullMode.PullUp);
         switch (direct) {
             case enPos.LeftState: {
             
-                if (pins.digitalReadPin(DigitalPin.P7) == enTouchState.Get) {
+                if (pins.digitalReadPin(DigitalPin.P7) == value) {
                     temp = true
                 }
                 else {
-										temp = false
+                    temp = false
                 }
                 break;
             }
 
             case enPos.RightState: {
-                if (pins.digitalReadPin(DigitalPin.P10) == enTouchState.Get) {                   
+                if (pins.digitalReadPin(DigitalPin.P10) == value) {                   
                     temp = true;
                 }
                 else {
@@ -580,26 +580,20 @@ namespace HelloBot {
         switch (direct) {
             case enPos.LeftState: {
                 if (pins.digitalReadPin(DigitalPin.P2) == value) {              
-                        temp = true;                  
+                    temp = true;                  
                 }
-                else {
-                   
-                        temp = false;
-                    }
-                    
+                else {                  
+                     temp = false;
                 }
                 break;
             }
 
             case enPos.RightState: {
                 if (pins.digitalReadPin(DigitalPin.P1) == value) {              
-                        temp = true;                  
+                    temp = true;                  
                 }
                 else {
-                   
-                        temp = false;
-                    }
-                    
+                    temp = false;
                 }
                 break;
             }
@@ -642,11 +636,9 @@ namespace HelloBot {
                 if (pins.digitalReadPin(DigitalPin.P3) == value) {              
                         temp = true;                  
                 }
-                else {
+                else{
                    
                         temp = false;
-                    }
-                    
                 }
                 break;
             }
@@ -655,11 +647,8 @@ namespace HelloBot {
                 if (pins.digitalReadPin(DigitalPin.P4) == value) {              
                         temp = true;                  
                 }
-                else {
-                   
+                else{
                         temp = false;
-                    }
-                    
                 }
                 break;
             }
