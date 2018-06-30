@@ -576,7 +576,8 @@ namespace HelloBot {
     export function Line_Sensor(direct: enPos, value: enLineState): boolean {
 
         let temp: boolean = false;
-
+				pins.setPull(DigitalPin.P1, PinPullMode.PullUp);
+				pins.setPull(DigitalPin.P2, PinPullMode.PullUp);
         switch (direct) {
             case enPos.LeftState: {
                 if (pins.digitalReadPin(DigitalPin.P2) == value) {              
@@ -630,25 +631,25 @@ namespace HelloBot {
     export function Avoid_Sensor(direct: enPos, value: enAvoidState): boolean {
 
         let temp: boolean = false;
-        
+        pins.setPull(DigitalPin.P3, PinPullMode.PullUp);
+        pins.setPull(DigitalPin.P4, PinPullMode.PullUp);
         switch (direct) {
             case enPos.LeftState: {
                 if (pins.digitalReadPin(DigitalPin.P3) == value) {              
-                        temp = true;                  
+                    temp = true;                  
                 }
                 else{
-                   
-                        temp = false;
+                    temp = false;
                 }
                 break;
             }
 
             case enPos.RightState: {
                 if (pins.digitalReadPin(DigitalPin.P4) == value) {              
-                        temp = true;                  
+                     temp = true;                  
                 }
                 else{
-                        temp = false;
+                     temp = false;
                 }
                 break;
             }
