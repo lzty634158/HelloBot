@@ -8,7 +8,7 @@
   "HelloBot.RGB_Line_Program|block": "巡线七彩流水灯",
   "HelloBot.Music_Car|block": "小车音乐播放|%index",
   "HelloBot.Line_Sensor|block": "巡线传感器|位置 %direct|检测到 %value",
-  "HelloBot.Avoid_Sensor|block": "避障传感器|检测到 %value",
+  "HelloBot.Avoid_Sensor|block": "避障传感器|位置 %direct|检测到 %value",
   "HelloBot.Servo_Car|block": "小车舵机|编号 %num|角度 %value",
   "HelloBot.CarCtrl|block": "小车控制|%index",
   "HelloBot.CarCtrlSpeed|block": "小车控制|%index|速度 %speed",

@@ -87,9 +87,9 @@ namespace HelloBot {
 
     export enum enLineState {
         //% blockId="White" block="白线"
-        White = 1,
+        White = 0,
         //% blockId="Black" block="黑线"
-        Black = 0
+        Black = 1
     }
     
     export enum enTouchState {
@@ -579,33 +579,27 @@ namespace HelloBot {
 
         switch (direct) {
             case enPos.LeftState: {
-                if (pins.analogReadPin(AnalogPin.P2) < 500) {
-                    if (value == enLineState.White) {
-                        temp = true;
-                    }
-                    setPwm(7, 0, 4095);
+                if (pins.digitalReadPin(DigitalPin.P2) == value) {              
+                        temp = true;                  
                 }
                 else {
-                    if (value == enLineState.Black) {
-                        temp = true;
+                   
+                        temp = false;
                     }
-                    setPwm(7, 0, 0);
+                    
                 }
                 break;
             }
 
             case enPos.RightState: {
-                if (pins.analogReadPin(AnalogPin.P1) < 500) {
-                    if (value == enLineState.White) {
-                        temp = true;
-                    }
-                    setPwm(6, 0, 4095);
+                if (pins.digitalReadPin(DigitalPin.P1) == value) {              
+                        temp = true;                  
                 }
                 else {
-                    if (value == enLineState.Black) {
-                        temp = true;
+                   
+                        temp = false;
                     }
-                    setPwm(6, 0, 0);
+                    
                 }
                 break;
             }
@@ -634,43 +628,42 @@ namespace HelloBot {
         return d / 58;
     }
 
-    //% blockId=HelloBot_Avoid_Sensor block="Avoid_Sensor|value %value"
+    //% blockId=HelloBot_Avoid_Sensor block="Avoid_Sensor|direct %direct|value %value"
     //% weight=87
     //% blockGap=10
     //% color="#006400"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
-    export function Avoid_Sensor(value: enAvoidState): boolean {
+    export function Avoid_Sensor(direct: enPos, value: enAvoidState): boolean {
 
         let temp: boolean = false;
-        pins.digitalWritePin(DigitalPin.P9, 0);
-        switch (value) {
-            case enAvoidState.OBSTACLE: {
-                if (pins.analogReadPin(AnalogPin.P3) < 800) {
-                
-                    temp = true;
-                    setPwm(8, 0, 0);
+        
+        switch (direct) {
+            case enPos.LeftState: {
+                if (pins.digitalReadPin(DigitalPin.P3) == value) {              
+                        temp = true;                  
                 }
-                else {                 
-                    temp = false;
-                    setPwm(8, 0, 4095);
+                else {
+                   
+                        temp = false;
+                    }
+                    
                 }
                 break;
             }
 
-            case enAvoidState.NOOBSTACLE: {
-                if (pins.analogReadPin(AnalogPin.P3) > 800) {
-
-                    temp = true;
-                    setPwm(8, 0, 4095);
+            case enPos.RightState: {
+                if (pins.digitalReadPin(DigitalPin.P4) == value) {              
+                        temp = true;                  
                 }
                 else {
-                    temp = false;
-                    setPwm(8, 0, 0);
+                   
+                        temp = false;
+                    }
+                    
                 }
                 break;
             }
         }
-        pins.digitalWritePin(DigitalPin.P9, 1);
         return temp;
 
     }
