@@ -99,9 +99,9 @@ namespace HelloBot {
         NoGet = 1
     }    
     export enum enAvoidState {
-        //% blockId="OBSTACLE" block="OBSTACLE"
+        //% blockId="OBSTACLE" block="Obstacle"
         OBSTACLE = 1,
-        //% blockId="NOOBSTACLE" block="NOOBSTACLE"
+        //% blockId="NOOBSTACLE" block="No Obstacle"
         NOOBSTACLE = 0
 
     }
