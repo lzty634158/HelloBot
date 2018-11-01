@@ -13,8 +13,8 @@
     "files": [
         "README.md",
         "main.ts",
-        "_locales/zh/HelloBot-strings.json",
-        "_locales/zh-tw/HelloBot-strings.json"
+        "_locales/zh-CN/HelloBot-strings.json",
+        "_locales/zh-TW/HelloBot-strings.json"
 
     ],
     "testFiles": [
