@@ -620,7 +620,7 @@ namespace HelloBot {
 
         // read pulse
         let d = pins.pulseIn(DigitalPin.P15, PulseValue.High, 43200);
-        return d / 58;
+        return  Math.floor(d / 58);
     }
 
     //% blockId=HelloBot_Avoid_Sensor block="Avoid_Sensor|direct %direct|value %value"
