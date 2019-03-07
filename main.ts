@@ -612,7 +612,7 @@ namespace HelloBot {
 
         // send pulse       
         let list:Array<number> = [0, 0, 0, 0, 0];
-        for (var i = 0; i < 5; i++) {
+        for (let i = 0; i < 5; i++) {
             pins.setPull(DigitalPin.P14, PinPullMode.PullNone);
 		        pins.digitalWritePin(DigitalPin.P14, 0);
 		        control.waitMicros(2);
