@@ -621,11 +621,11 @@ namespace HelloBot {
 		        pins.digitalWritePin(DigitalPin.P14, 0);
 		
 		        let d = pins.pulseIn(DigitalPin.P15, PulseValue.High, 43200);
-		        list[i] = Math.floor(d / 58)
+		        list[i] = Math.floor(d / 40)
         }
         list.sort();
         let length = (list[1] + list[2] + list[3])/3;
-        return  length;
+        return  Math.floor(length);
     }
 
     //% blockId=HelloBot_Avoid_Sensor block="Avoid_Sensor|direct %direct|value %value"
