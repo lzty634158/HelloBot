@@ -1,6 +1,6 @@
 {
     "name": "HelloBot",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "Extension for YahBoom HelloBot",
     "license": "MIT",
     "dependencies": {
@@ -13,8 +13,8 @@
     "files": [
         "README.md",
         "main.ts",
-        "_locales/zh/HelloBot-strings.json",
-        "_locales/zh-hant/HelloBot-strings.json"
+        "_locales/zh-cn/HelloBot-strings.json",
+        "_locales/zh-tw/HelloBot-strings.json"
 
     ],
     "testFiles": [
