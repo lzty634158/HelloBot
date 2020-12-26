@@ -1,12 +1,11 @@
 {
     "name": "HelloBot",
-    "version": "2.0.1",
-    "description": "Extension for YahBoom HelloBot 2.0.1",
+    "version": "2.0.2",
+    "description": "Extension for YahBoom HelloBot 2.0.2",
     "license": "MIT",
     "dependencies": {
         "core": "*",
-        "neopixel": "github:lzty634158/pxt-neopixel",
-        "Mbit_IR":  "github:lzty634158/yahboom_mbit_IR"
+        "neopixel": "github:lzty634158/pxt-neopixel"
 	
 
     },

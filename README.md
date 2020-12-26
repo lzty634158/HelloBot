@@ -1,6 +1,6 @@
 # HelloBot
 
-Extension for Yahboom HelloBot 2.0.1
+Extension for Yahboom HelloBot 2.0.2
 
 ## License
 
